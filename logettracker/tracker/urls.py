@@ -13,6 +13,5 @@ urlpatterns = [
     path('signup/', views.signupView, name='signup'),
     path('logout/', views.logoutView, name='logout'),
     
-    path('signup/success/', views.signupSuccess, name='signup_success'),
-    path('logout/success/', views.logoutSuccess, name='logout_success')
+    path('<slug:t>/success/', views.success, name='success'),
 ]

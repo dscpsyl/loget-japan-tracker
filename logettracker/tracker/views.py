@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout 
 
 from .forms import UserCreationForm, LoginForm
@@ -10,7 +9,7 @@ import random as rand
 
 def index(request):
     if request.user.is_authenticated:
-        return redirect('tracker')
+        return redirect('tracker:tracker')
     
     cardsImgs = LoGetCards.objects.values_list('Img', flat=True)
     randImgs = rand.sample(list(cardsImgs), 6)
@@ -27,26 +26,38 @@ def tracker(request):
     
     cards = LoGetCards.objects.all()
     context = {'cards': cards,
-               'username': 'testuser'}
+               'username': request.user.username,
+               "logoutview": 'tracker:logout',
+               'userview': 'tracker:user'}
     return render(request, 'tracker/tracker.html', context)
 
 
 def signupView(request):
+    form = UserCreationForm()
+    context = {'form': form,
+               'failed': False}
+    
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('signup_success')
+            return redirect('tracker:success', t='signup')
         else:
-            return redirect('signup')
-    
-    form = UserCreationForm()
-    return render(request, 'tracker/signup.html', {'form': form})
+            context['failed'] = True
+            return render(request, 'tracker/signup.html', context)
+        
+    return render(request, 'tracker/signup.html', context)
 
-def signupSuccess(request):
-    return render(request, 'tracker/signup_success.html') #! which will show a confirmation and redirect to login page after a few seconds
+def success(request, t):
+    context = {'t': t}
+    
+    return render(request, 'tracker/success.html', context)
 
 def loginView(request):
+    form = LoginForm()
+    context = {'form': form,
+                "failed": False}
+    
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -55,20 +66,18 @@ def loginView(request):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)    
-                return redirect('tracker') #! need to update it so that it loads in the user data and is only accessible to logged in users
-        else:
-            return redirect('login')
+                return redirect('tracker:tracker')
+        
+        context['failed'] = True
     
-    form = LoginForm()
-    return render(request, 'tracker/login.html', {'form': form})
+    return render(request, 'tracker/login.html', context)
 
 def logoutView(request):
-    logout(request)
-    return redirect('logout_success')
-
-def logoutSuccess(request):
-    return render(request, 'tracker/logout_success.html') #! which will show a confirmation and redirect to index page after a few seconds
-
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect('tracker:success', t='logout')
+    else:
+        return redirect('tracker:index')
 
 def userView(request):
     return HttpResponse("Hello, world. You're at the tracker user.")
