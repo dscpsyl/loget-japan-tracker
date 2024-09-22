@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <link rel="stylesheet" href="{% static 'tracker/base.css' %}">
+    <link rel="stylesheet" href="{% static 'tracker/settings.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Are you sure you want to delete your account?</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="danger">Yes, Delete My Account</button>
+            <a href="{% url 'tracker:settings' %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
