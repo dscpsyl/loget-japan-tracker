@@ -2,7 +2,7 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'tracker/base.css' %}">
-<link rel="stylesheet" href="{% static 'tracker/signup.css' %}">
+<link rel="stylesheet" href="{% static 'tracker/signup_login.css' %}">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
         </div>
     </div>
     <button class="btn" type="submit">Signup</button>
-    <a class="login" href="{% url 'tracker:login' %}">Already have account?</a>
+    <a class="other" href="{% url 'tracker:login' %}">Already have account?</a>
 </form>
 </body>
 </html>
