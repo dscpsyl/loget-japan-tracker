@@ -110,6 +110,9 @@ def main():
     log.basicConfig(level=log.INFO, filename=f'scrapper_{datetime.now()}.log', encoding='utf-8', format='%(asctime)s-%(levelname)s:%(message)s')
     logger = log.getLogger(__name__)
     
+    consoleHandler = log.StreamHandler()
+    logger.addHandler(consoleHandler)
+    
     logger.info(f"*****Starting to scrape LoGet card at {datetime.now()}, URL: {CARDLISTURL}*****")
     
     logger.info(f"Connecting to database using service: {DBSERVICE}")
