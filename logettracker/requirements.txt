@@ -3,7 +3,6 @@ beautifulsoup4==4.12.3
 certifi==2024.8.30
 charset-normalizer==3.3.2
 Django==5.1.1
-django-allauth==64.2.1
 dnspython==2.6.1
 idna==3.10
 pillow==10.4.0
