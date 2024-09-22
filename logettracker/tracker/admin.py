@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Users, LoGetCards
+from .models import LoGetUsers, LoGetCards
 
-admin.site.register(Users)
+admin.site.register(LoGetUsers)
 admin.site.register(LoGetCards)

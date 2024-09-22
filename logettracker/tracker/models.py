@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -21,12 +22,9 @@ def collectedCardsDataValidator(jsonData):
                     params={'jsonData': jsonData},
                     )
 
-class Users(models.Model):
+class LoGetUsers(models.Model):
     
-    Id = models.UUIDField(default=uuid.uuid4, editable=False)
-    Username = models.CharField(max_length=50)
-    Created_at = models.DateTimeField(auto_now_add=True)
-    Email = models.EmailField(max_length=254, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     CardsColleted = models.JSONField(validators=[collectedCardsDataValidator], default=dict)
 
 

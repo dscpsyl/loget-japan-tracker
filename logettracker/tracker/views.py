@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout 
 
 from .forms import UserCreationForm, LoginForm
-from .models import LoGetCards
+from .models import LoGetCards, LoGetUsers
 
 import random as rand
 
@@ -65,7 +65,10 @@ def loginView(request):
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
             if user:
-                login(request, user)    
+                login(request, user)
+                existingUser = LoGetUsers.objects.filter(user=user)
+                if not existingUser:
+                    LoGetUsers(user=user, CardsColleted={'collected': []}).save()
                 return redirect('tracker:tracker')
         
         context['failed'] = True
