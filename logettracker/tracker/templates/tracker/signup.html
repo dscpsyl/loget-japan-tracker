@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'tracker/base.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 <h1>Signup</h1>
 <form method="POST">
     {% csrf_token %}
@@ -5,3 +15,5 @@
     <button type="submit">Signup</button>
     <a href="{% url 'tracker:login' %}">Already have account?</a>
 </form>
+</body>
+</html>

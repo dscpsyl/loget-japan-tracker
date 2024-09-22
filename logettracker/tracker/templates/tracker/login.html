@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'tracker/base.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
 <h1>Login</h1>
 <form method="POST">
     {% csrf_token %}
@@ -5,3 +18,5 @@
     <button type="submit">Login</button>
     <a href="{% url 'tracker:signup' %}">Dont have Account Create</a>
 </form>
+</body>
+</html>
