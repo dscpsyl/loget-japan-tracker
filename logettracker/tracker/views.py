@@ -1,17 +1,24 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponse
 
 
 from .models import LoGetCards
 
+import random as rand
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the tracker index.")
+    cardsImgs = LoGetCards.objects.values_list('Img', flat=True)
+    randImgs = rand.sample(list(cardsImgs), 6)
+    
+    context = {'imgs': randImgs}
+
+    return render(request, 'tracker/index.html', context)
 
 def tracker(request):
     cards = LoGetCards.objects.all()
-    context = {'cards': cards,}
-    return render(request, 'tracker/index.html', context)
+    context = {'cards': cards,
+               'username': 'testuser'}
+    return render(request, 'tracker/tracker.html', context)
 
 def user(request):
     return HttpResponse("Hello, world. You're at the tracker user.")
