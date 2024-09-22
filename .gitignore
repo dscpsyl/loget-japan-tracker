@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 
 logettracker/.my_pgpass
+
+*/*/migrations/*
