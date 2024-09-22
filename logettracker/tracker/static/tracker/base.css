@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 html,
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Josefin Sans", Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #edf2fa;
     height: 100%;
-
 }
