@@ -14,7 +14,7 @@ def collectedCardsDataValidator(jsonData):
                 )
         
         listOfCardIds = jsonData['collected']
-        validCardIds = LoGetCards.objects.values_list('id', flat=True)
+        validCardIds = LoGetCards.objects.values_list('Id', flat=True)
         for cardId in listOfCardIds:
             if not isinstance(cardId, int) or not cardId in validCardIds:
                 raise ValidationError(

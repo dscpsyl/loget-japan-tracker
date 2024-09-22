@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
+from django.core import serializers
 
 from .forms import UserCreationForm, LoginForm
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import LoGetCards, LoGetUsers
 
 import random as rand
+import json
 
 def index(request):
     if request.user.is_authenticated:
@@ -20,15 +26,13 @@ def index(request):
 
     return render(request, 'tracker/index.html', context)
 
+@login_required
 def tracker(request):
-    if not request.user.is_authenticated:
-        return redirect('tracker:index')
-    
     cards = LoGetCards.objects.all()
     context = {'cards': cards,
                'username': request.user.username,
                "logoutview": 'tracker:logout',
-               'userview': 'tracker:user'}
+               'userview': 'tracker:settings'}
     return render(request, 'tracker/tracker.html', context)
 
 
@@ -75,12 +79,42 @@ def loginView(request):
     
     return render(request, 'tracker/login.html', context)
 
+@login_required
 def logoutView(request):
-    if request.user.is_authenticated:
-        logout(request)
-        return redirect('tracker:success', t='logout')
-    else:
-        return redirect('tracker:index')
+    logout(request)
+    return redirect('tracker:success', t='logout')
 
-def userView(request):
-    return HttpResponse("Hello, world. You're at the tracker user.")
+@login_required
+def settings(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            user = form.save()  # Save the new password
+            update_session_auth_hash(request, user)  # Prevent user from being logged out after password change
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('tracker:settings')
+        else:
+            messages.error(request, 'Please correct the error below.')
+
+    form = PasswordChangeForm(user=request.user)
+    context = {'form': form,
+                'username': request.user.username}    
+    
+    return render(request, 'tracker/settings.html', context)
+
+@login_required
+def exportData(request):
+    user = request.user
+    collected = LoGetUsers.objects.get(user=user).CardsColleted
+    cards = json.dumps(collected)
+    
+    
+    return HttpResponse(cards, headers={"Content-Type": "text/plain", "Content-Disposition": 'attachment; filename="collectedcards.json"'})
+
+@login_required
+def deleteDaccount(request):
+    if request.method == 'POST':
+        request.user.delete()
+        return redirect('tracker:success', t='delete')
+
+    return render(request, 'tracker/deleteConfirmation.html')
