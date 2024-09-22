@@ -1,0 +1,29 @@
+html,
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+    font-style: bold;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.1rem;
+}
