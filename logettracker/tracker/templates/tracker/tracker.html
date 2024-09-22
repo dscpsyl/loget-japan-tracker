@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'tracker/tracker.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="tracker_title">
+        <h1>{{ username }}'s </h1>
+        <img src="https://loget-card.jp/img/logo/loget.png" alt="Loget Logo" />
+        <h1>Collection</h1>
+    </div>
+    <main>
+    {% if cards %}
+        <div class="container">
+            {% for card in cards %}
+                <div class="card">
+                    <a href="{{ card.LoGetURL }}" target="_blank">
+                        <img src="{{ card.Img }}" alt="{{ card.Name }}"/>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    </main>
+</body>
+</html>

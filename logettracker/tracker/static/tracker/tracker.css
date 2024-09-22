@@ -1,0 +1,56 @@
+/* overview.css */
+html,
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+    background-color: #edf2fa;
+    height: 100%;
+
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+.card {
+    opacity: 50%;
+}
+
+.card:hover {
+    opacity: 100%;
+}
+
+.collected {
+    opacity: 100%;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tracker_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tracker_title h1 {
+    padding: 10px;
+    font-size: 5rem;
+    font-weight: 500;
+    color: #000000;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.tracker_title img {
+    height: 100px;
+}
