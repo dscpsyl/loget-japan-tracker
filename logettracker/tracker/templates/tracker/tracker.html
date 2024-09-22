@@ -16,6 +16,9 @@
         <img src="https://loget-card.jp/img/logo/loget.png" alt="Loget Logo" />
         <h1>Collection</h1>
     </div>
+    <div>
+        <a href="{% url 'tracker:logout' %}">Logout</a>
+    </div>
     <main>
     {% if cards %}
         <div class="container">
