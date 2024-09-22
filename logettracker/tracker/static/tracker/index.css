@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #edf2fa;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.card {
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    animation: move 20s linear infinite;
+}
+
+.card:nth-child(1) {
+    left: 20%;
+    animation-duration: 15s;
+}
+
+.card:nth-child(2) {
+    left: 40%;
+    animation-duration: 25s;
+}
+
+.card:nth-child(3) {
+    left: 60%;
+    animation-duration: 20s;
+}
+
+.card:nth-child(4) {
+    left: 80%;
+    animation-duration: 30s;
+}
+
+.card:nth-child(5) {
+    left: 10%;
+    animation-duration: 10s;
+}
+
+.card:nth-child(6) {
+    left: 0%;
+    animation-duration: 5s;
+}
+
+@keyframes move {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+.logo {
+    animation: float 3s ease-in-out infinite;
+}
+
+.logo img {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.logo h1 {
+  display: flex;
+  justify-content: center;
+  color: black;
+  text-shadow: -2px -2px 0 #FFF, 
+                2px -2px 0 #FFF, 
+                -2px 2px 0 #FFF, 
+                2px 2px 0 #FFF;
+  font-size: 5em;
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.buttons {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.signup {
+    background-color: rgb(125, 187, 24);
+    color: white;
+}
+
+.login {
+    background-color: rgb(34, 164, 190);
+    color: white;
+}
+
+.signup:hover, .login:hover {
+    color: #333;
+    background-color: white;
+    border: 2px solid;
+}
