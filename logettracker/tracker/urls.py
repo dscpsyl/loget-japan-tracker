@@ -16,4 +16,5 @@ urlpatterns = [
     path('logout/', views.logoutView, name='logout'),
     
     path('<slug:t>/success/', views.success, name='success'),
+    path('tracker/processcardaction/', views.processCardAction, name='processCardAction')
 ]
