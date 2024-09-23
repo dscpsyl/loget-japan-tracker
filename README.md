@@ -95,6 +95,9 @@ We assume you are running on Ubuntu. As such, you will need to have the followin
 * Python 3.6 or higher
 * A Postgres database
 * Apache, Nginx, or your favorite web server (we will assume you know how to set this up)
+  * *SECURITY WARNING: In `settings.py`, we have set the allowed_hosts to `['*']`. This is not secure and should be changed to your domain name, or you need to have your web server checking for hostname.*
+* From a back-end standpoint, there are no logs. This is for privacy reasons and is deemed acceptable for this low-security project. However, you may want to set up logging for your own purposes.
+* There are also no tests for this project. This is because the project's scope is simple and future changes are not forseen. However, you may want to set up tests for your own purposes.
 
 
 ### Installation
@@ -132,7 +135,11 @@ We assume you are running on Ubuntu. As such, you will need to have the followin
    ```sh
    cd ../logetscraper && python main.py
    ```
-9. Finally, start the server
+9. If you are deploying to a production environment, make sure to run the deploy checks. Otherwise, enable DEBUG and remove other restrictions in the `settings.py` file for your own convenience.
+    ```sh
+    python manage.py check --deploy
+    ``` 
+10. Finally, start the server
    ```sh
    cd ../logettracker && python manage.py runserver
    ```
