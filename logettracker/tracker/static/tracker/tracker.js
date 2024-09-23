@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   const greenCheckButtons = document.querySelectorAll(".greenCheck");
   const redXButtons = document.querySelectorAll(".redX");
 
   greenCheckButtons.forEach((button) => {
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function() {
       const divId = this.getAttribute("data-id");
       const container = document.getElementById(divId);
       if (!container.classList.contains("collected")) {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   redXButtons.forEach((button) => {
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function() {
       const divId = this.getAttribute("data-id");
       const container = document.getElementById(divId);
       if (container.classList.contains("collected")) {
@@ -27,20 +27,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Send action to Django backend
   function sendCardActionToBackend(divId, action) {
     fetch(`processcardaction/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRFToken": getCookie("csrftoken"), // CSRF token for security
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json",
+        "X-CSRFToken" : getCookie("csrftoken"), // CSRF token for security
       },
-      body: JSON.stringify({ div_id: divId, action: action }),
+      body : JSON.stringify({div_id : divId, action : action}),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        .then((response) => response.json())
+        .then((data) => { console.log("Success:", data); })
+        .catch((error) => { console.error("Error:", error); });
   }
 
   function getCookie(name) {
