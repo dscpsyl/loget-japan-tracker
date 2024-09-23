@@ -26,9 +26,10 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = os.getenv('DJANGO-SECRET-KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: Nginx will handle host checking in the production environment
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,8 +126,17 @@ LOGIN_URL = 'tracker:login'
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = '/var/www/logettracker/static/'
+
+# This app does not accept media
+MEDIA_URL = '/dev/null/'
+MEDIA_ROOT = '/dev/null/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# This app runs specifically over https
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
