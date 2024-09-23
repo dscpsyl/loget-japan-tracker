@@ -7,7 +7,7 @@
 
 .card {
     position: relative;
-    opacity: 50%;
+    opacity: 25%;
     overflow: hidden
 }
 
@@ -97,11 +97,11 @@
     font-size: 20px;
 }
 
-.overlay button.green-check {
+.overlay button.greenCheck {
     color: green;
 }
 
-.overlay button.red-x {
+.overlay button.redX {
     color: red;
 }
 
