@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('djangoadmin/', admin.site.urls),
     path("", include("tracker.urls")),
+    path('captcha/', include('captcha.urls'))
 ]

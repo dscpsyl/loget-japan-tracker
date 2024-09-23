@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 
-from .forms import UserCreationForm, LoginForm
+from .forms import SignupForm, LoginForm
 from django.contrib.auth.forms import PasswordChangeForm
 from .models import LoGetCards, LoGetUsers
 
@@ -66,12 +66,12 @@ def signupView(request):
     if request.user.is_authenticated:
         return redirect('tracker:tracker')
     
-    form = UserCreationForm()
+    form = SignupForm()
     context = {'form': form,
                'failed': False}
     
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('tracker:success', t='signup')
