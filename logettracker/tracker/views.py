@@ -39,7 +39,7 @@ def tracker(request):
                'userview': 'tracker:settings'}
     return render(request, 'tracker/tracker.html', context)
 
-
+@login_required
 def processCardAction(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -63,6 +63,9 @@ def processCardAction(request):
     return JsonResponse({'status': 'failed'}, status=400)
 
 def signupView(request):
+    if request.user.is_authenticated:
+        return redirect('tracker:tracker')
+    
     form = UserCreationForm()
     context = {'form': form,
                'failed': False}
@@ -79,11 +82,17 @@ def signupView(request):
     return render(request, 'tracker/signup.html', context)
 
 def success(request, t):
+    if request.user.is_authenticated:
+        return redirect('tracker:tracker')
+    
     context = {'t': t}
     
     return render(request, 'tracker/success.html', context)
 
 def loginView(request):
+    if request.user.is_authenticated:
+        return redirect('tracker:tracker')
+    
     form = LoginForm()
     context = {'form': form,
                 "failed": False}
