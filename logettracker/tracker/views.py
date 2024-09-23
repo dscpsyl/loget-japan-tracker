@@ -75,7 +75,8 @@ def processCardAction(request):
         action = data.get("action")
 
         user = request.user
-        userCards = LoGetUsers.objects.get(user=user).CardsColleted["collected"]
+        userCards = LoGetUsers.objects.get(
+            user=user).CardsColleted["collected"]
 
         if action == "add":
             if div_id not in userCards:
@@ -85,8 +86,7 @@ def processCardAction(request):
                 userCards.remove(div_id)
 
         LoGetUsers.objects.filter(user=user).update(
-            CardsColleted={"collected": userCards}
-        )
+            CardsColleted={"collected": userCards})
 
         return JsonResponse({"status": "success"})
 
@@ -154,7 +154,9 @@ def loginView(request):
                 login(request, user)
                 existingUser = LoGetUsers.objects.filter(user=user)
                 if not existingUser:
-                    LoGetUsers(user=user, CardsColleted={"collected": []}).save()
+                    LoGetUsers(user=user, CardsColleted={
+                        "collected": []
+                    }).save()
                 return redirect("tracker:tracker")
 
         context["failed"] = True
@@ -186,7 +188,8 @@ def settings(request):
             user = form.save()  # Save the new password
             # Prevent user from being logged out after password change
             update_session_auth_hash(request, user)
-            messages.success(request, "Your password was successfully updated!")
+            messages.success(request,
+                             "Your password was successfully updated!")
             return redirect("tracker:settings")
         else:
             messages.error(request, "Please correct the error below.")
@@ -212,7 +215,8 @@ def exportData(request):
         cards,
         headers={
             "Content-Type": "text/plain",
-            "Content-Disposition": 'attachment; filename="collectedcards.json"',
+            "Content-Disposition":
+            'attachment; filename="collectedcards.json"',
         },
     )
 

@@ -13,7 +13,7 @@ urlpatterns = [
     path("signup/", views.signupView, name="signup"),
     path("logout/", views.logoutView, name="logout"),
     path("<slug:t>/success/", views.success, name="success"),
-    path(
-        "tracker/processcardaction/", views.processCardAction, name="processCardAction"
-    ),
+    path("tracker/processcardaction/",
+         views.processCardAction,
+         name="processCardAction"),
 ]

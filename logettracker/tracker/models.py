@@ -11,12 +11,9 @@ def collectedCardsDataValidator(jsonData):
     :param jsonData:
 
     """
-    if (
-        not isinstance(jsonData, dict)
-        or not len(jsonData) == 1
-        or not "collected" in jsonData
-        or not isinstance(jsonData["collected"], list)
-    ):
+    if (not isinstance(jsonData, dict) or not len(jsonData) == 1
+            or not "collected" in jsonData
+            or not isinstance(jsonData["collected"], list)):
         raise ValidationError(
             gettext_lazy(
                 "The collectedCards field must be a dictionary of format {'collected': [cardid1, cardid2, ...]}."
@@ -39,10 +36,11 @@ def collectedCardsDataValidator(jsonData):
 class LoGetUsers(models.Model):
     """ """
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    CardsColleted = models.JSONField(
-        validators=[collectedCardsDataValidator], default=dict
-    )
+    user = models.OneToOneField(User,
+                                on_delete=models.CASCADE,
+                                primary_key=True)
+    CardsColleted = models.JSONField(validators=[collectedCardsDataValidator],
+                                     default=dict)
 
 
 class URLStartCheckValidator(URLValidator):
@@ -56,7 +54,10 @@ class URLStartCheckValidator(URLValidator):
         if not url.startswith(self.startString):
             raise ValidationError(
                 gettext_lazy("The URL must start with '%(startString)s'."),
-                params={"url": url, "startString": self.startString},
+                params={
+                    "url": url,
+                    "startString": self.startString
+                },
             )
         super().__call__(url)
 
@@ -66,22 +67,16 @@ class LoGetCards(models.Model):
 
     Id = models.IntegerField(primary_key=True)
     Name = models.CharField(max_length=100)
-    Img = models.URLField(
-        validators=[
-            URLValidator(),
-            URLStartCheckValidator("https://loget-card.jp/img/cards"),
-        ]
-    )
-    SpotmapLink = models.URLField(
-        validators=[
-            URLValidator(),
-            URLStartCheckValidator("https://loget-card.jp/list_map.aspx"),
-        ]
-    )
-    LoGetURL = models.URLField(
-        validators=[
-            URLValidator(),
-            URLStartCheckValidator("https://loget-card.jp/list.aspx"),
-        ]
-    )
+    Img = models.URLField(validators=[
+        URLValidator(),
+        URLStartCheckValidator("https://loget-card.jp/img/cards"),
+    ])
+    SpotmapLink = models.URLField(validators=[
+        URLValidator(),
+        URLStartCheckValidator("https://loget-card.jp/list_map.aspx"),
+    ])
+    LoGetURL = models.URLField(validators=[
+        URLValidator(),
+        URLStartCheckValidator("https://loget-card.jp/list.aspx"),
+    ])
     SpotWebsiteLink = models.URLField()
