@@ -1,16 +1,13 @@
 <a name="readme-top"></a>
 
-
-
 <!-- PROJECT SHIELDS -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -32,8 +29,6 @@
     <a href="https://github.com/dscpsyl/loget-japan-tracker/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -59,9 +54,8 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 ![Product Name Screen Shot](.github/product.png)
@@ -70,20 +64,16 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 ### Built With
 
-* [![Python][Python.org]][Python-url]
-* [![Django][Django.com]][Django-url]
-* [![Javascript][Javascript.com]][Javascript-url]
-
+- [![Python][Python.org]][Python-url]
+- [![Django][Django.com]][Django-url]
+- [![Javascript][Javascript.com]][Javascript-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 Feel free to uitilize the already existing webpage for your needs. However, if you wish to self-host, follow the steps below.
@@ -92,13 +82,12 @@ Feel free to uitilize the already existing webpage for your needs. However, if y
 
 We assume you are running on Ubuntu. As such, you will need to have the following set up:
 
-* Python 3.6 or higher
-* A Postgres database
-* Apache, Nginx, or your favorite web server (we will assume you know how to set this up)
-  * *SECURITY WARNING: In `settings.py`, we have set the allowed_hosts to `['*']`. This is not secure and should be changed to your domain name, or you need to have your web server checking for hostname.*
-* From a back-end standpoint, there are no logs. This is for privacy reasons and is deemed acceptable for this low-security project. However, you may want to set up logging for your own purposes.
-* There are also no tests for this project. This is because the project's scope is simple and future changes are not forseen. However, you may want to set up tests for your own purposes.
-
+- Python 3.6 or higher
+- A Postgres database
+- Apache, Nginx, or your favorite web server (we will assume you know how to set this up)
+  - _SECURITY WARNING: In `settings.py`, we have set the allowed_hosts to `['_']`. This is not secure and should be changed to your domain name, or you need to have your web server checking for hostname.\*
+- From a back-end standpoint, there are no logs. This is for privacy reasons and is deemed acceptable for this low-security project. However, you may want to set up logging for your own purposes.
+- There are also no tests for this project. This is because the project's scope is simple and future changes are not forseen. However, you may want to set up tests for your own purposes.
 
 ### Installation
 
@@ -113,7 +102,7 @@ We assume you are running on Ubuntu. As such, you will need to have the followin
 3. Install the required packages
    ```sh
     pip install -r requirements.txt
-    ```
+   ```
 4. Set up your environment variables in the Django project folder
    ```sh
    cd logettracker && touch .env
@@ -130,37 +119,36 @@ We assume you are running on Ubuntu. As such, you will need to have the followin
 7. Create a superuser
    ```sh
    python manage.py createsuperuser
-    ```
+   ```
 8. Populate your cards table with the scraper.
    ```sh
    cd ../logetscraper && python main.py
    ```
 9. If you are deploying to a production environment, make sure to run the deploy checks. Otherwise, enable DEBUG and remove other restrictions in the `settings.py` file for your own convenience.
-    ```sh
-    python manage.py check --deploy
-    python manage.py collectstatic
-    ``` 
-10. Finally, start the server
    ```sh
-   cd ../logettracker && python manage.py runserver
+   python manage.py check --deploy
+   python manage.py collectstatic
    ```
+10. Finally, start the server
 
+```sh
+cd ../logettracker && python manage.py runserver
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
-Usage is simple. Simply create an account on the website and login. 
+Usage is simple. Simply create an account on the website and login.
 
 You will be redirected to the tracker page where you can select which cards you've already collected. Cards yet to be collected will be greyed out. You can also export your collection in the settings page. If at any time you wish to erase your existance from the site, you can delete your account in the settings page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -176,18 +164,16 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the AGPL-3.0 License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Dscpsyl - [@SimYouLater28](https://twitter.com/SimYouLater28)
@@ -198,8 +184,8 @@ Project Link: [https://github.com/dscpsyl/loget-japan-tracker](https://github.co
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/dscpsyl/loget-japan-tracker.svg?style=for-the-badge
 [contributors-url]: https://github.com/dscpsyl/loget-japan-tracker/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/dscpsyl/loget-japan-tracker.svg?style=for-the-badge
@@ -212,12 +198,9 @@ Project Link: [https://github.com/dscpsyl/loget-japan-tracker](https://github.co
 [license-url]: https://github.com/dscpsyl/loget-japan-tracker/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/davidjsim
-
 [Python.org]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
 [Python-url]: https://www.python.org/
-
 [Django.com]: https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white
 [Django-url]: https://www.djangoproject.com/
-
 [Javascript.com]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
 [Javascript-url]: https://www.javascript.com/
