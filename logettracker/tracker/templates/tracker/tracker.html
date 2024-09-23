@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="{% static 'tracker/tracker.js' %}"></script>
 </head>
 <body>
     <div class="tracker_title">
@@ -29,8 +30,8 @@
                         <img src="{{ card.Img }}" alt="{{ card.Name }}"/>
                     </a>
                     <div class="overlay">
-                        <button class="green-check" data-id="{{ card.Id }}">✔</button>
-                        <button class="red-x" data-id="{{ card.Id }}">✖</button>
+                        <button class="greenCheck" data-id="{{ card.Id }}">✔</button>
+                        <button class="redX" data-id="{{ card.Id }}">✖</button>
                     </div>
                 </div>
             {% endfor %}
