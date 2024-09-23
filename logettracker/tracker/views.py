@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
-from django.core import serializers
 
 from .forms import UserCreationForm, LoginForm
 from django.contrib.auth.forms import PasswordChangeForm
@@ -28,13 +27,40 @@ def index(request):
 
 @login_required
 def tracker(request):
+    user = request.user
+    userCards = LoGetUsers.objects.get(user=user).CardsColleted['collected']
+    userCardIds = [int(card) for card in userCards]
+    
     cards = LoGetCards.objects.all()
     context = {'cards': cards,
+               'collected': userCardIds,
                'username': request.user.username,
                "logoutview": 'tracker:logout',
                'userview': 'tracker:settings'}
     return render(request, 'tracker/tracker.html', context)
 
+
+def processCardAction(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        div_id = data.get('div_id')
+        action = data.get('action')
+
+        user = request.user
+        userCards = LoGetUsers.objects.get(user=user).CardsColleted['collected']
+        
+        if action == 'add':
+            if div_id not in userCards:
+                userCards.append(div_id)
+        elif action == 'remove':
+            if div_id in userCards:
+                userCards.remove(div_id)
+        
+        LoGetUsers.objects.filter(user=user).update(CardsColleted={'collected': userCards})
+
+        return JsonResponse({'status': 'success'})
+
+    return JsonResponse({'status': 'failed'}, status=400)
 
 def signupView(request):
     form = UserCreationForm()
