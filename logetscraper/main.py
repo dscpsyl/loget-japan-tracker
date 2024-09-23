@@ -49,7 +49,7 @@ def logetURLReconstructor(inputPart, typ):
     :type inputPart: str
     :param type: The type of URL to reconstruct. Options are 'card', 'map', img
     :type type: str
-    :param typ:
+    :param typ: returns: A full URL based on the input part and type.
     :returns: A full URL based on the input part and type.
     :rtype: str
 
