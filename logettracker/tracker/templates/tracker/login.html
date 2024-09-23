@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'tracker/base.css' %}">
+<link rel="stylesheet" href="{% static 'tracker/signup_login.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<form method="POST">
+    {% if failed %}
+        <div class="failed">
+            No account found with that username and password.
+        </div>
+    {% endif %}
+    {% csrf_token %}
+    <div class="container">
+        <div class="form-card">
+            <h1>Login</h1>
+            {{ form.as_table }}
+        </div>
+    </div>
+    <button class="btn" type="submit">Login</button>
+    <a class="other" href="{% url 'tracker:signup' %}">Dont have Account?</a>
+</form>
+</body>
+</html>

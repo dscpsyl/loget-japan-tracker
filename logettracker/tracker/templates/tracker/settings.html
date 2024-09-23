@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <link rel="stylesheet" href="{% static 'tracker/base.css' %}">
+    <link rel="stylesheet" href="{% static 'tracker/settings.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ username }}'s Settings</h1>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="{% if message.tags %}{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <section class="password-change">
+            <a href="{% url 'tracker:tracker' %}">Back to Tracker</a>
+            <h2>Change Password</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <button type="submit">Update Password</button>
+            </form>
+        </section>
+
+        <section class="export-data">
+            <h2>Export User Data</h2>
+            <form method="GET" action="{% url 'tracker:exportData' %}">
+                <button type="submit">Download Cards Collected Data</button>
+            </form>
+        </section>
+
+        <section class="delete-account">
+            <h2>Delete Account</h2>
+            <form method="GET" action="{% url 'tracker:deleteAccount' %}">
+                {% csrf_token %}
+                <button type="submit" class="danger">Delete Account</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

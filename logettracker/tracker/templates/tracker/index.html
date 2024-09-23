@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'tracker/base.css' %}">
+<link rel="stylesheet" href="{% static 'tracker/index.css' %}">
+<script defer src="{% static 'tracker/index.js' %}"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+    {% if imgs %}
+        {% for img in imgs %}
+            <div class="card"><img src="{{ img }}"/></div>
+        {% endfor %}
+    {% else %}
+        <div class="card"><img src="https://loget-card.jp/img/card/001.png"/></div>
+        <div class="card"><img src="https://loget-card.jp/img/card/002.png"/></div>
+        <div class="card"><img src="https://loget-card.jp/img/card/003.png"/></div>
+        <div class="card"><img src="https://loget-card.jp/img/card/004.png"/></div>
+        <div class="card"><img src="https://loget-card.jp/img/card/005.png"/></div>
+        <div class="card"><img src="https://loget-card.jp/img/card/006.png"/></div>
+    {% endif %}
+    </div>
+
+
+    <div class="container">
+        <!-- Logo in the middle -->
+        <div class="logo"><img src="https://loget-card.jp/img/logo/loget.png"/>
+          <h1>Tracker</h1>
+
+          </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <button onclick="location.href='{% url signupview %}'" class="btn signup">Sign Up</button>
+            <button onclick="location.href='{% url loginview %}'" class="btn login">Log In</button>
+        </div>
+    </div>
+</body>
+</html>

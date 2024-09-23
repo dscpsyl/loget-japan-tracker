@@ -1,0 +1,110 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+.card {
+    position: relative;
+    opacity: 25%;
+    overflow: hidden
+}
+
+.card:hover {
+    opacity: 100%;
+}
+
+.collected {
+    opacity: 100%;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tracker_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tracker_title h1 {
+    padding: 10px;
+    font-size: 5rem;
+    font-weight: 500;
+    color: #000000;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.tracker_title img {
+    height: 100px;
+}
+
+.bar {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    background-color: #202c70;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay button {
+    background-color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.overlay button.greenCheck {
+    color: green;
+}
+
+.overlay button.redX {
+    color: red;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}

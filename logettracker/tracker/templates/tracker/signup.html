@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'tracker/base.css' %}">
+<link rel="stylesheet" href="{% static 'tracker/signup_login.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<form method="POST">
+    {% if failed %}
+        <div class="failed">
+            One of your inputs was incorrect. Please try again.
+        </div>
+    {% endif %}
+    {% csrf_token %}
+    <div class="container">
+        <div class="form-card">
+            <h1>Signup</h1>
+            {{ form.as_table }}
+        </div>
+    </div>
+    <button class="btn" type="submit">Signup</button>
+    <a class="other" href="{% url 'tracker:login' %}">Already have account?</a>
+</form>
+</body>
+</html>

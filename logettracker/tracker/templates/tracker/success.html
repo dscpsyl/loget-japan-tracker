@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'tracker/base.css' %}">
+<link rel="stylesheet" href="{% static 'tracker/success.css' %}">
+<script defer src="{% static 'tracker/success.js' %}"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            {% if t == 'signup' %}
+                <h1>Signup Successful!</h1>
+                <p>You have successfully signed up. Please sign-in. You will be redirected shortly.</p>
+            {% elif t == 'logout' %}
+                <h1>Logout Successful!</h1>
+                <p>You have successfully logged out. You will be redirected shortly.</p>
+            {% elif t == 'delete' %}
+            <h1>Account Deletion Successful!</h1>
+            <p>You have successfully deleted your account. You will be redirected shortly.</p>
+            {% else %}
+                <h1>ERROR! SOMETHING WENT WRONG!</h1>
+                <p>We're not sure where you came from! You will be redirected to the home page shortly.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'tracker/base.css' %}">
+<link rel="stylesheet" href="{% static 'tracker/tracker.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="{% static 'tracker/tracker.js' %}"></script>
+</head>
+<body>
+    <div class="tracker_title">
+        <h1>{{ username }}'s </h1>
+        <img src="https://loget-card.jp/img/logo/loget.png" alt="Loget Logo" />
+        <h1>Collection</h1>
+    </div>
+    <div>
+        <div class="bar">
+            <button class="btn" onclick="location.href='{% url userview %}'">Settings</button>
+            <button class="btn" onclick="location.href='{% url logoutview %}'">Logout</button>
+        </div>
+    </div>
+    <main>
+    {% if cards %}
+        <div class="container">
+            {% for card in cards %}
+                <div id="{{ card.Id }}" class="{% if card.Id in collected %} card collected {% else %} card {% endif %}">
+                    <a href="{{ card.LoGetURL }}" target="_blank">
+                        <img src="{{ card.Img }}" alt="{{ card.Name }}"/>
+                    </a>
+                    <div class="overlay">
+                        <button class="greenCheck" data-id="{{ card.Id }}">✔</button>
+                        <button class="redX" data-id="{{ card.Id }}">✖</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    </main>
+</body>
+</html>
