@@ -77,9 +77,7 @@ def findCardName(cardURL):
     soup = BeautifulSoup(response.content, "html.parser")
     s = soup.find_all("section", class_="listA")
 
-    assert len(
-        s
-    ) == 1, f"Unexpected number of sections in finding card name: {len(s)}"
+    assert len(s) == 1, f"Unexpected number of sections in finding card name: {len(s)}"
 
     head = s[0].find_all("h1")
 
@@ -102,14 +100,13 @@ def findCardSpotLink(cardURL):
     soup = BeautifulSoup(response.content, "html.parser")
     s = soup.find_all("section", class_="listA")
 
-    assert len(
-        s
-    ) == 1, f"Unexpected number of sections in finding card name: {len(s)}"
+    assert len(s) == 1, f"Unexpected number of sections in finding card name: {len(s)}"
 
     spot = s[0].find_all("div", class_="text_footer")
 
-    assert (len(spot) == 1
-            ), f"Unexpected number of a tags in finding card name: {len(spot)}"
+    assert (
+        len(spot) == 1
+    ), f"Unexpected number of a tags in finding card name: {len(spot)}"
 
     link = spot[0].find_all("a", target="_blank")
 
@@ -156,13 +153,11 @@ def main():
     assert len(cardIds) == len(
         cardImgs
     ), f"Number of card Ids and card images do not match: {len(cardIds)} vs {len(cardImgs)}"
-    logger.info(
-        f"Found a total of {len(cardIds)} cards in the card list page.")
+    logger.info(f"Found a total of {len(cardIds)} cards in the card list page.")
 
     for cardId, cardImg in zip(cardIds, cardImgs):
         if cardId in existingCardIds:
-            logger.info(
-                f"Card {cardId} already exists in the database. Skipping.")
+            logger.info(f"Card {cardId} already exists in the database. Skipping.")
             continue
 
         cardURL = logetURLReconstructor(cardId, "card")
