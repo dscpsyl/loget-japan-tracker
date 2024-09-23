@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'logettracker.wsgi.application'
+
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -129,8 +132,8 @@ STATIC_URL = 'static/'
 STATIC_ROOT = '/var/www/logettracker/static/'
 
 # This app does not accept media
-MEDIA_URL = '/dev/null/'
-MEDIA_ROOT = '/dev/null/'
+# MEDIA_URL = '/dev/null/'
+# MEDIA_ROOT = '/dev/null/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
