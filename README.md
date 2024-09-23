@@ -138,6 +138,7 @@ We assume you are running on Ubuntu. As such, you will need to have the followin
 9. If you are deploying to a production environment, make sure to run the deploy checks. Otherwise, enable DEBUG and remove other restrictions in the `settings.py` file for your own convenience.
     ```sh
     python manage.py check --deploy
+    python manage.py collectstatic
     ``` 
 10. Finally, start the server
    ```sh
