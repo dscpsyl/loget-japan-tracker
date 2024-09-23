@@ -2,14 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
-
-import uuid    
+from django.utils.translation import gettext_lazy
 
 def collectedCardsDataValidator(jsonData):
         if not isinstance(jsonData, dict) or not len(jsonData) == 1 or not 'collected' in jsonData or not isinstance(jsonData['collected'], list):
             raise ValidationError(
-                _("The collectedCards field must be a dictionary of format {'collected': [cardid1, cardid2, ...]}."),
+                gettext_lazy("The collectedCards field must be a dictionary of format {'collected': [cardid1, cardid2, ...]}."),
                 params={'jsonData': jsonData},
                 )
         
@@ -18,7 +16,7 @@ def collectedCardsDataValidator(jsonData):
         for cardId in listOfCardIds:
             if not isinstance(cardId, int) or not cardId in validCardIds:
                 raise ValidationError(
-                    _("The collectedCards field must be a dictionary of format {'collected': [cardid1, cardid2, ...]}."),
+                    gettext_lazy("The collectedCards field must be a dictionary of format {'collected': [cardid1, cardid2, ...]}."),
                     params={'jsonData': jsonData},
                     )
 
@@ -37,7 +35,7 @@ class URLStartCheckValidator(URLValidator):
     def __call__(self, url):
         if not url.startswith(self.startString):
             raise ValidationError(
-                _("The URL must start with '%(startString)s'."),
+                gettext_lazy("The URL must start with '%(startString)s'."),
                 params={'url': url, 'startString': self.startString},
                 )
         super().__call__(url)
