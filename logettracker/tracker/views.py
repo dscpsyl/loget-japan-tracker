@@ -22,7 +22,7 @@ from .models import LoGetUsers
 def index(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     if request.user.is_authenticated:
@@ -44,7 +44,7 @@ def index(request):
 def tracker(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     user = request.user
@@ -66,7 +66,7 @@ def tracker(request):
 def processCardAction(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     if request.method == "POST":
@@ -96,7 +96,7 @@ def processCardAction(request):
 def signupView(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     if request.user.is_authenticated:
@@ -120,8 +120,8 @@ def signupView(request):
 def success(request, t):
     """
 
-    :param request: 
-    :param t: 
+    :param request:
+    :param t:
 
     """
     if request.user.is_authenticated:
@@ -135,7 +135,7 @@ def success(request, t):
 def loginView(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     if request.user.is_authenticated:
@@ -166,7 +166,7 @@ def loginView(request):
 def logoutView(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     logout(request)
@@ -177,7 +177,7 @@ def logoutView(request):
 def settings(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     if request.method == "POST":
@@ -201,7 +201,7 @@ def settings(request):
 def exportData(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     user = request.user
@@ -221,7 +221,7 @@ def exportData(request):
 def deleteDaccount(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     if request.method == "POST":

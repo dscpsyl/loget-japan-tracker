@@ -88,9 +88,9 @@ body {
   display: flex;
   justify-content: center;
   color: black;
-  text-shadow: -2px -2px 0 #FFF, 
-                2px -2px 0 #FFF, 
-                -2px 2px 0 #FFF, 
+  text-shadow: -2px -2px 0 #FFF,
+                2px -2px 0 #FFF,
+                -2px 2px 0 #FFF,
                 2px 2px 0 #FFF;
   font-size: 5em;
   font-family: "Josefin Sans", sans-serif;

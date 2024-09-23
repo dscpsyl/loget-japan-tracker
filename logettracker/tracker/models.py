@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy
 def collectedCardsDataValidator(jsonData):
     """
 
-    :param jsonData: 
+    :param jsonData:
 
     """
     if (
