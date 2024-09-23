@@ -1,3 +1,1 @@
-setTimeout(() => {
-    window.location.href = "/";
-}, 3000);
+setTimeout(() => { window.location.href = "/"; }, 3000);
