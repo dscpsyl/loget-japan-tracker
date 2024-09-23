@@ -24,10 +24,14 @@
     {% if cards %}
         <div class="container">
             {% for card in cards %}
-                <div class="card">
+                <div id="{{ card.Id }}" class="card">
                     <a href="{{ card.LoGetURL }}" target="_blank">
                         <img src="{{ card.Img }}" alt="{{ card.Name }}"/>
                     </a>
+                    <div class="overlay">
+                        <button class="green-check" data-id="{{ card.Id }}">✔</button>
+                        <button class="red-x" data-id="{{ card.Id }}">✖</button>
+                    </div>
                 </div>
             {% endfor %}
         </div>

@@ -6,7 +6,9 @@
 }
 
 .card {
+    position: relative;
     opacity: 50%;
+    overflow: hidden
 }
 
 .card:hover {
@@ -70,4 +72,39 @@
 
 .btn:focus {
     outline: none;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay button {
+    background-color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.overlay button.green-check {
+    color: green;
+}
+
+.overlay button.red-x {
+    color: red;
+}
+
+.card:hover .overlay {
+    opacity: 1;
 }
