@@ -1,12 +1,10 @@
-import requests as r
-from bs4 import BeautifulSoup
-
+import logging as log
+from datetime import datetime
 from urllib.parse import urlparse
 
-from datetime import datetime
 import psycopg2
-
-import logging as log
+import requests as r
+from bs4 import BeautifulSoup
 
 CARDLISTURL = "https://loget-card.jp/list_card.aspx"
 DBSERVICE = "logetcardtrackerdb_service"
