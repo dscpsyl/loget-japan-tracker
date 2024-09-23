@@ -14,11 +14,11 @@ def findCards(soup):
     """Given a bs4 soup object, return a list of card Ids and their image. This is based on
     the structure of the HTML of the LoGet card list page.
 
-    Args:
-        soup (b4s.soup): A bs4 soup object of the LoGet card list page, parsed by html
+    :param soup: A bs4 soup object of the LoGet card list page, parsed by html
+    :type soup: b4s.soup
+    :returns: A tuple of lists containing (cardIds, cardImg)
+    :rtype: typle
 
-    Returns:
-        typle: A tuple of lists containing (cardIds, cardImg)
     """
 
     cardIds = []
@@ -45,12 +45,14 @@ def findCards(soup):
 def logetURLReconstructor(inputPart, typ):
     """Given a part of a LoGet URL, reconstruct the full URL based on the type of URL.
 
-    Args:
-        inputPart (str): A part of a LoGet URL
-        type (str): The type of URL to reconstruct. Options are 'card', 'map', img
+    :param inputPart: A part of a LoGet URL
+    :type inputPart: str
+    :param type: The type of URL to reconstruct. Options are 'card', 'map', img
+    :type type: str
+    :param typ: 
+    :returns: A full URL based on the input part and type.
+    :rtype: str
 
-    Returns:
-        str: A full URL based on the input part and type.
     """
 
     if typ == "card":
@@ -66,11 +68,9 @@ def logetURLReconstructor(inputPart, typ):
 def findCardName(cardURL):
     """Given a card URL, return the name of the card.
 
-    Args:
-        cardURL (str): The URL of the card
+    :param cardURL: str
+    :returns: str: The name of the card
 
-    Return:
-        str: The name of the card
     """
 
     response = r.get(cardURL)
@@ -91,11 +91,9 @@ def findCardName(cardURL):
 def findCardSpotLink(cardURL):
     """Given a card URL, return the spot map link of the card.
 
-    Args:
-        cardURL (str): The URL of the card
+    :param cardURL: str
+    :returns: str: The spot map link of the card
 
-    Return:
-        str: The spot map link of the card
     """
 
     response = r.get(cardURL)
@@ -120,6 +118,7 @@ def findCardSpotLink(cardURL):
 
 
 def main():
+    """ """
     log.basicConfig(
         level=log.INFO,
         filename=f"scrapper_{datetime.now()}.log",

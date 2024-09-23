@@ -6,6 +6,11 @@ from django.utils.translation import gettext_lazy
 
 
 def collectedCardsDataValidator(jsonData):
+    """
+
+    :param jsonData: 
+
+    """
     if (
         not isinstance(jsonData, dict)
         or not len(jsonData) == 1
@@ -32,6 +37,7 @@ def collectedCardsDataValidator(jsonData):
 
 
 class LoGetUsers(models.Model):
+    """ """
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     CardsColleted = models.JSONField(
@@ -40,6 +46,7 @@ class LoGetUsers(models.Model):
 
 
 class URLStartCheckValidator(URLValidator):
+    """ """
     def __init__(self, startString, schemes=None, **kwargs):
         self.startString = startString
         super().__init__(schemes, **kwargs)
@@ -54,6 +61,7 @@ class URLStartCheckValidator(URLValidator):
 
 
 class LoGetCards(models.Model):
+    """ """
     Id = models.IntegerField(primary_key=True)
     Name = models.CharField(max_length=100)
     Img = models.URLField(

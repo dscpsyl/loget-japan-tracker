@@ -14,6 +14,11 @@ from .models import LoGetCards, LoGetUsers
 
 
 def index(request):
+    """
+
+    :param request: 
+
+    """
     if request.user.is_authenticated:
         return redirect("tracker:tracker")
 
@@ -31,6 +36,11 @@ def index(request):
 
 @login_required
 def tracker(request):
+    """
+
+    :param request: 
+
+    """
     user = request.user
     userCards = LoGetUsers.objects.get(user=user).CardsColleted["collected"]
     userCardIds = [int(card) for card in userCards]
@@ -48,6 +58,11 @@ def tracker(request):
 
 @login_required
 def processCardAction(request):
+    """
+
+    :param request: 
+
+    """
     if request.method == "POST":
         data = json.loads(request.body)
         div_id = data.get("div_id")
@@ -73,6 +88,11 @@ def processCardAction(request):
 
 
 def signupView(request):
+    """
+
+    :param request: 
+
+    """
     if request.user.is_authenticated:
         return redirect("tracker:tracker")
 
@@ -92,6 +112,12 @@ def signupView(request):
 
 
 def success(request, t):
+    """
+
+    :param request: 
+    :param t: 
+
+    """
     if request.user.is_authenticated:
         return redirect("tracker:tracker")
 
@@ -101,6 +127,11 @@ def success(request, t):
 
 
 def loginView(request):
+    """
+
+    :param request: 
+
+    """
     if request.user.is_authenticated:
         return redirect("tracker:tracker")
 
@@ -127,12 +158,22 @@ def loginView(request):
 
 @login_required
 def logoutView(request):
+    """
+
+    :param request: 
+
+    """
     logout(request)
     return redirect("tracker:success", t="logout")
 
 
 @login_required
 def settings(request):
+    """
+
+    :param request: 
+
+    """
     if request.method == "POST":
         form = PasswordChangeForm(user=request.user, data=request.POST)
         if form.is_valid():
@@ -152,6 +193,11 @@ def settings(request):
 
 @login_required
 def exportData(request):
+    """
+
+    :param request: 
+
+    """
     user = request.user
     collected = LoGetUsers.objects.get(user=user).CardsColleted
     cards = json.dumps(collected)
@@ -167,6 +213,11 @@ def exportData(request):
 
 @login_required
 def deleteDaccount(request):
+    """
+
+    :param request: 
+
+    """
     if request.method == "POST":
         request.user.delete()
         return redirect("tracker:success", t="delete")
