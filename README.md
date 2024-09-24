@@ -176,10 +176,12 @@ Distributed under the AGPL-3.0 License. See `LICENSE` for more information.
 
 ## Contact
 
-Dscpsyl - [@SimYouLater28](https://twitter.com/SimYouLater28)
-
-Project Link: [https://github.com/dscpsyl/loget-japan-tracker](https://github.com/dscpsyl/loget-japan-tracker)
-
+<a href="https://github.com/dscpsyl/loget-japan-tracker/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=dscpsyl/loget-japan-tracker" />
+</a>
+<br/>
+<br/>
+  
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/dscpsyl)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
