@@ -114,7 +114,7 @@ We assume you are running on Ubuntu. As such, you will need to have the followin
 5. Setup your database connection. We want your Postgres to have a service named `logetcardtrackerdb_service` with the database name `loget_tracker`. In addition, create a `.my_pgpass` in the Django project folder to connect to your database. You can change how you want to connect to your database in the `settings.py` file.
 6. Make the migrations
    ```sh
-   python manage.py makemigrations && python manage.py migrate
+   python manage.py makemigrations tracker && python manage.py migrate
    ```
 7. Create a superuser
    ```sh
